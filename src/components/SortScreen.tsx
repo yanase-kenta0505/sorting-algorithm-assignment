@@ -24,6 +24,9 @@ export const SortScreen = () => {
     setSortTargetArray(array)
   }
 
+  /**
+   * マージソートを実行
+   */
   const mergeSort = (array: number[]): number[] => {
     // 再帰処理の終了条件
     if (array.length <= 1) {
@@ -41,6 +44,9 @@ export const SortScreen = () => {
     return merge(sortedLeftArray, sortedRightArray)
   }
 
+  /**
+   * マージ処理を行う
+   */
   const merge = (sortedLeftArray: number[] | undefined, sortedRightArray: number[] | undefined) => {
     if (!sortedLeftArray || !sortedRightArray) {
       return []
@@ -63,8 +69,6 @@ export const SortScreen = () => {
 
     const newArray = result.concat(sortedLeftArray.slice(leftIndex)).concat(sortedRightArray.slice(rightIndex))
 
-    setSortTargetArray(newArray)
-
     return newArray
   }
 
@@ -85,7 +89,7 @@ export const SortScreen = () => {
           ))}
         </HStack>
         <Button colorScheme="teal" size='sm' onClick={bubbleSort}>バブルソート</Button>
-        <Button colorScheme="teal" size='sm' onClick={() => mergeSort(sortTargetArray)}>マージソート</Button>
+        <Button colorScheme="teal" size='sm' onClick={() => setSortTargetArray(mergeSort(sortTargetArray))}>マージソート</Button>
         <Button colorScheme="red" size='sm' onClick={reset}>リセット</Button>
       </VStack>
     </Center>
