@@ -12,6 +12,7 @@ export const SortScreen = () => {
     const array = [...sortTargetArray]
     const length = array.length
 
+    // ↓はarray.sort((a, b) => a - b)でも実装可能
     for (let i = 0; i < length - 1; i++) {
       for (let j = 0; j < length - 1 - i; j++) {
         if (array[j] > array[j + 1]) {
@@ -72,7 +73,6 @@ export const SortScreen = () => {
     return newArray
   }
 
-
   /**
    * 配列を初期状態に戻す
    */
@@ -88,9 +88,15 @@ export const SortScreen = () => {
             </Box>
           ))}
         </HStack>
-        <Button colorScheme="teal" size='sm' onClick={bubbleSort}>バブルソート</Button>
-        <Button colorScheme="teal" size='sm' onClick={() => setSortTargetArray(mergeSort(sortTargetArray))}>マージソート</Button>
-        <Button colorScheme="red" size='sm' onClick={reset}>リセット</Button>
+        <Button colorScheme="teal" size='sm' onClick={bubbleSort}>
+          バブルソート
+        </Button>
+        <Button colorScheme="teal" size='sm' onClick={() => setSortTargetArray(mergeSort(sortTargetArray))}>
+          マージソート
+        </Button>
+        <Button colorScheme="red" size='sm' onClick={reset}>
+          リセット
+        </Button>
       </VStack>
     </Center>
   )
